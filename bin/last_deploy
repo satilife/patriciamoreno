@@ -1,0 +1,34 @@
+#!/usr/bin/env ruby
+
+# Outputs the SHA of the last deploy for the given Heroku remote (default is
+# "production").
+#
+# Usage:
+#
+#   ./bin/last_deploy [remote]
+#
+
+class Releases
+  attr_reader :remote
+
+  def initialize(remote)
+    @remote = remote
+  end
+
+  def last_deploy_sha
+    matches = output.match(/Deploy (\w+)/)
+    raise 'No deploys found' unless matches
+
+    matches[1]
+  end
+
+  private
+
+  def output
+    @output ||= `heroku releases --remote #{remote}`
+  end
+end
+
+remote = ARGV.first || 'production'
+releases = Releases.new(remote)
+puts releases.last_deploy_sha

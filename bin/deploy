@@ -1,0 +1,148 @@
+#!/bin/bash
+# usage: bin/deploy staging|production
+
+#---------------------------
+# Environment variables
+#---------------------------
+
+export SKIP_MASTER_CONFIRM_HOOK=true    # disables git/hooks/pre-push
+
+#---------------------------
+# Program variables
+#---------------------------
+
+default_remote="staging"
+remote=${1:-$default_remote}
+current_branch=`git rev-parse --abbrev-ref HEAD`
+commit_range=`./bin/last_deploy $remote`..$current_branch
+log_len=`git log $commit_range --pretty=oneline | wc -l`
+
+#---------------------------
+# Helper methods
+#---------------------------
+
+title()
+{
+  echo -e "\033[4m$1\033[0m"
+}
+
+subtitle()
+{
+  echo -e "\n\033[34m\033[1m$1\033[0m"
+}
+
+remote()
+{
+  if [ $remote == "production" ]; then
+    echo -e "\033[31m$remote"     # Red
+  else
+    echo -e "\033[33m$remote"     # Yellow
+  fi
+}
+
+branch()
+{
+  if [ $current_branch == "master" ]; then
+    echo -e "\033[32m$current_branch\033[0m"     # Green
+  else
+    echo -e "\033[36m$current_branch\033[0m"     # Cyan
+  fi
+}
+
+ensure_success()
+{
+  if [ $? -ne 0 ]; then
+    exit 1
+  fi
+}
+
+#---------------------------
+# Program methods
+#---------------------------
+
+sync_git()
+{
+  subtitle "git pull:"
+  git pull origin $current_branch
+  ensure_success
+
+  git pull origin master
+  ensure_success
+
+  subtitle "git push:"
+  git push origin $current_branch
+  ensure_success
+}
+
+show_pull_requests()
+{
+  subtitle "pull requests:"
+  if [ $log_len -eq 0 ]; then
+    echo "No pull requests being deployed."
+  else
+    git log $commit_range --reverse --pretty=oneline --abbrev-commit | grep 'pull request' | cut -d' ' -f5-
+  fi
+}
+
+show_commit_tree()
+{
+  subtitle "commit tree:"
+
+  if [ $log_len -eq 0 ]; then
+    echo "No differences detected."
+  else
+    git --no-pager log $commit_range --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+    echo
+  fi
+}
+
+confirm_deploy()
+{
+  subtitle "\033[0mWould you like to continue with this `remote` deploy\033[0m?"
+  read -p "[y|n] " -n 1 -r < /dev/tty
+  echo
+
+  if echo $REPLY | grep -E '^[Yy]$' > /dev/null; then
+    subtitle "\033[0mdeploy `branch`\033[0m to `remote`\033[0m:"
+  else
+    echo -e "\033[31mdeploy aborted"
+    exit 1
+  fi
+}
+
+deploy_to_heroku()
+{
+  if [ $remote == "production" ]; then
+    `git push $remote master`
+  else
+    `git push $remote $current_branch:master --force`
+  fi
+
+  heroku run rake db:migrate -r $remote
+}
+
+#---------------------------
+# Sanity Checks
+#---------------------------
+
+# Enforce master-only deploys to production
+if [ $remote == "production" ] && [ $current_branch != "master" ]; then
+  echo "You can only deploy the master branch to production!"
+  exit 1
+fi
+
+#---------------------------
+# Program
+#---------------------------
+
+title "`remote` deploy @ `date`"
+
+sync_git
+
+show_pull_requests
+
+show_commit_tree
+
+confirm_deploy
+
+deploy_to_heroku
