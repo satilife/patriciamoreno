@@ -3,6 +3,13 @@ The Primary Soul Camp Website
 
 ## Development
 
+### Heroku Setup
+
+```
+heroku git:remote -a satilife-staging -r staging
+heroku git:remote -a satilife-production -r production
+```
+
 ### Clone production data
 In order to clone production data to your local machine, you can use the following commands:
 
