@@ -1,0 +1,28 @@
+<% if devise_mapping.omniauthable? %>
+  <h4 class="title">Using other accounts</h4>
+  <div class="row">
+    <div class="hide visible-md visible-lg col-xs-10">
+      <p class="spacer">You can sign up or sign in to <strong>soul.camp</strong> using your Facebook or Google account!</p>
+    </div>
+    <div class="col-xs-6 col-md-12">
+      <p>
+        <%= link_to user_omniauth_authorize_path(:facebook), class: 'btn btn-block btn-lg btn-social btn-facebook' do %>
+          <%= fa_icon 'facebook' %>
+          <span class="hidden-xs">Sign in with&nbsp;</span>Facebook
+        <% end %>
+      </p>
+    </div>
+    <div class="col-xs-6 col-md-12">
+      <p>
+        <%= link_to user_omniauth_authorize_path(:google_oauth2), class: 'btn btn-block btn-lg btn-social btn-google' do %>
+          <%= fa_icon 'google' %>
+          <span class="hidden-xs">Sign in with&nbsp;</span>Google
+        <% end %>
+      </p>
+    </div>
+  </div>
+  <hr class="hide visible-xs visible-sm">
+<% else %>
+  <h4>Sign up today</h4>
+  <p>Create a <strong>soul.camp</strong> account to register for upcoming camps!</p>
+<% end %>

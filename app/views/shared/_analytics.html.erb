@@ -1,0 +1,60 @@
+<script id="google-analytics">
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-61424797-1', 'auto');
+  ga('require', 'ecommerce');
+  ga('send', 'pageview');
+</script>
+
+<% if Rails.env.production? %>
+  <script type="text/javascript">
+  window.addEventListener('load',function(){
+    var timer = setInterval(function(){
+      var $response = $('.response');
+      if($response.is(":visible")){
+        ga('send','event','Form','Submit','Get it Now');
+        var conversion = 'www.googleadservices.com/pagead/conversion/925597418/?label=XjosCOz7tWYQ6v2tuQM&guid=ON&script=0';
+        $('body').append('<img height="1" width="1" style="border-style:none;" alt="" src="//' + conversion + '"/>');
+        clearInterval(timer);
+
+        if ($response.text().indexOf('Welcome to') >= 0) {
+          setTimeout(function(){ window.location = '/?utm_source=google&utm_medium=adwords&utm_campaign=join-us-optin'; }, 500);
+        }
+      }
+    },1000);
+
+    jQuery('.track-booking').click(function(){
+      var conversionId;
+
+      switch (campType) {
+      case 'east':
+        conversionId = 'W64fCJHhhGgQ6v2tuQM';
+        ga('send','event','Button','Click','East');
+        break;
+
+      case 'west':
+        conversionId = 'Lu3CCKPhhGgQ6v2tuQM';
+        ga('send','event','Button','Click','West');
+        break;
+
+      default:
+        conversionId = 'a07yCJ_JtGcQ6v2tuQM';
+        ga('send','event','Button','Click','Book ticket');
+        break;
+      }
+
+      var conversion = 'www.googleadservices.com/pagead/conversion/925597418/?label=' + conversionId + '&guid=ON&script=0';
+      $('body').append('<img height="1" width="1" style="border-style:none;" alt="" src="//' + conversion + '"/>');
+    });
+
+    jQuery('.optin-btn').click(function(){
+      ga('send','event','Button','Click','Optin');
+      var conversion = 'www.googleadservices.com/pagead/conversion/925597418/?label=LiziCITjhGgQ6v2tuQM&guid=ON&script=0';
+      $('body').append('<img height="1" width="1" style="border-style:none;" alt="" src="//' + conversion + '"/>');
+    });
+  })
+  </script>
+<% end %>

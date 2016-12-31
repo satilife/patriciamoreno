@@ -1,0 +1,25 @@
+<%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
+  <%= f.hidden_field :reset_password_token %>
+
+  <div class="row">
+    <div class="col-xs-12">
+      <%= f.input :password, wrapper: :input_group do %>
+        <div class="input-group-addon"><%= fa_icon 'key' %></div>
+        <%= f.input_field :password, class: 'form-control', autocomplete: :off, placeholder: 'Enter password' %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-12">
+      <%= f.input :password_confirmation, wrapper: :input_group do %>
+        <div class="input-group-addon"><%= fa_icon 'key' %></div>
+        <%= f.input_field :password_confirmation, class: 'form-control', autocomplete: :off, placeholder: 'Enter password' %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="actions">
+    <%= f.submit 'Change my password', class: 'btn btn-primary' %>
+  </div>
+<% end %>

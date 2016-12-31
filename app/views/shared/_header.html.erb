@@ -1,0 +1,83 @@
+<header class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <% if controller_name != 'join_us' || action_name != 'index' %>
+        <button type="button" class="navbar-toggle pull-left" data-toggle="collapse" data-target="#header-nav" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      <% end %>
+
+      <ul class="nav pull-right">
+        <li class="pull-left">
+          <% if admin? || counselor? %>
+            <%= link_to ENV['SITE_NAME'], root_path, class: 'nav-link' %>
+          <% else %>
+            <p class="navbar-btn">
+              <% case controller_name
+                 when 'optins' %>
+                <%= link_to 'BOOK YOUR TICKET NOW', bookings_path, class: 'track-booking btn btn-primary-alt btn-xs' %>
+              <% when 'join_us' %>
+                <% if action_name == 'show' %>
+                  <%= link_to 'BOOK YOUR TICKET NOW', bookings_path, class: 'track-booking btn btn-primary-alt btn-xs' %>
+                <% else %>
+                  <%= link_to 'GET YOUR GUIDE', optin_path('guide'), class: 'guide optin-btn btn btn-primary btn-xs' %>
+                <% end %>
+              <% when 'community' %>
+                <%= link_to bookings_path, class: 'track-booking btn btn-primary-alt btn-xs' do %>
+                  <span class="hidden-xs">BOOK YOUR TICKET</span>
+                  <span class="hide visible-xs-inline">BOOK NOW</span>
+                <% end %>
+                <%= link_to 'LEARN MORE HERE', optin_path('guide'), class: 'guide optin-btn btn btn-primary btn-xs' %>
+              <% when 'camps' %>
+                <%= link_to 'BOOK YOUR TICKET NOW', bookings_path, class: 'track-booking btn btn-primary-alt btn-xs' %>
+              <% else %>
+                <% if clerk? %>
+                  <%= link_to camp_cart_index_path(user: @user), class: 'btn btn-xs btn-success' do %>
+                    <%= fa_icon 'shopping-cart' %>
+                  <% end if @user.present? %>
+                <% else %>
+                  <%= link_to bookings_path, class: 'track-booking btn btn-primary-alt btn-xs' do %>
+                    <span class="hidden-xs">BOOK YOUR TICKET</span>
+                    <span class="hide visible-xs-inline">BOOK NOW</span>
+                  <% end %>
+                  <% if user_signed_in? %>
+                    <%= link_to cart_index_path, class: 'btn btn-xs btn-success' do %>
+                      <%= fa_icon 'shopping-cart' %>
+                    <% end %>
+                  <% else %>
+                    <%= link_to 'GET YOUR GUIDE', optin_path('guide'), class: 'guide optin-btn btn btn-primary btn-xs' %>
+                  <% end %>
+                <% end %>
+              <% end %>
+            </p>
+          <% end %>
+        </li>
+
+        <%= render 'shared/user_profile' %>
+      </ul>
+    </div>
+
+    <nav id="header-nav" class="collapse navbar-collapse navbar-left">
+      <ul class="nav navbar-nav">
+        <% if clerk? %>
+          <%= render 'shared/clerk_nav' %>
+        <% elsif counselor? %>
+          <%= render 'shared/counselor_nav' %>
+        <% elsif admin? %>
+          <%= render 'shared/admin_nav' %>
+        <% elsif user_signed_in? && current_user.camper.present? && current_user.reservations.count > 0 %>
+          <%= render 'shared/user_nav' %>
+        <% else %>
+          <%= render 'shared/site_nav' %>
+        <% end %>
+      </ul>
+    </nav>
+  </div>
+
+  <hr>
+</header>
+
+<div id="header-spacer"></div>

@@ -1,14 +1,24 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Patriciamoreno</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+  <head>
+    <%= stylesheet_link_tag 'application', media: 'all' %>
+    <%= render 'shared/page_header' %>
+    <%= render 'shared/facebook' %>
+  </head>
+  <body lang="en" class="<%= body_class %>">
+    <%= render 'shared/header' if page_header? %>
+    <%= render 'shared/flash_messages' %>
 
-<%= yield %>
+    <script>window.railsEnv = '<%= Rails.env %>';</script>
 
-</body>
+    <main role="main">
+      <%= yield %>
+    </main>
+
+    <%= render 'shared/footer' %>
+
+    <%= javascript_include_tag 'application' %>
+    <%= render 'shared/analytics' %>
+    <%= content_for(:page_specific_scripts) if content_for?(:page_specific_scripts) %>
+  </body>
 </html>

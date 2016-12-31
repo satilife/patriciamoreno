@@ -1,0 +1,18 @@
+<%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+  <div class="row">
+    <div class="col-xs-12">
+      <%= f.input :email, wrapper: :input_group do %>
+        <div class="input-group-addon"><%= fa_icon 'envelope' %></div>
+        <%= f.input_field :email, placeholder: 'Email address', class: 'form-control' %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="actions">
+    <%= f.submit 'Send me reset instructions', class: 'btn btn-primary' %>
+  </div>
+
+  <hr>
+
+  <p>Remembered your password? <%= link_to 'Log in', new_user_session_path %>
+<% end %>

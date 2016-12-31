@@ -1,0 +1,5 @@
+<section class="flash-messages">
+  <%= flash_message page_specific: :page_specific_notice, flash: notice, css_class: :info   %>
+  <%= flash_message page_specific: :page_specific_alert,  flash: alert,  css_class: :danger %>
+  <%= devise_error_messages %>
+</section>
