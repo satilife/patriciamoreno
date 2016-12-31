@@ -19,11 +19,11 @@ class RegistrationsPresenter < BasePresenter
 
   delegate :password_set?, to: :user
 
-  def link(enabled, provider)
+  def link(enabled, provider, path)
     if enabled
       view.link_to 'Disable', view.identity_path(provider), class: "#{link_classes} btn-danger", method: :delete, data: { confirm: 'Are you sure?' }
     else
-      view.link_to 'Enable', view.user_omniauth_authorize_path(provider), class: "#{link_classes} btn-success"
+      view.link_to 'Enable', path, class: "#{link_classes} btn-success"
     end
   end
 
@@ -32,11 +32,11 @@ class RegistrationsPresenter < BasePresenter
   end
 
   def facebook_link
-    link(facebook, :facebook)
+    link(facebook, :facebook, view.user_facebook_omniauth_authorize_path)
   end
 
   def google_link
-    link(google, :google_oauth2)
+    link(google, :google_oauth2, view.user_google_oauth2_omniauth_authorize_path)
   end
 
   def facebook

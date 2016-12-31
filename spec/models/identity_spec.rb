@@ -25,6 +25,7 @@ require 'models/concerns/avatarable'
 require 'support/shared_contexts/omniauth'
 
 RSpec.describe Identity, type: :model do
+  let(:klass_symbol) { :user }
   subject(:identity) { create :identity }
 
   it_behaves_like 'an avatarable record'

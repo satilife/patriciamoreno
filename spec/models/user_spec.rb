@@ -36,6 +36,7 @@ require 'models/concerns/authenticatable'
 require 'models/concerns/avatarable'
 
 RSpec.describe User, type: :model do
+  let(:klass_symbol) { :user }
   subject(:user) { create :user, first_name: 'Test', last_name: 'User' }
 
   it_behaves_like 'an authenticatable record'

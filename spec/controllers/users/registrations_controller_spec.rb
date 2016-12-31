@@ -12,7 +12,7 @@ RSpec.describe Users::RegistrationsController, type: :controller do
     before { put :update, user: params }
 
     context 'update user info' do
-      let(:params) { { first_name: 'Joe', last_name: 'Swanson', email: 'joe@swanson.com', phone_number: '+18608675309' } }
+      let(:params) { { first_name: 'Joe', last_name: 'Swanson', email: 'joe@swanson.com' } }
 
       it 'allows for the updating of all "soft" params without a password' do
         user.reload
@@ -23,7 +23,7 @@ RSpec.describe Users::RegistrationsController, type: :controller do
     end
 
     context 'update password' do
-      let(:params)  { { password: 'soulcamp', password_confirmation: 'soulcamp' } }
+      let(:params)  { { password: 'satilife', password_confirmation: 'satilife' } }
 
       context 'when no password has been set' do
         before { user.update(password_set: false) }

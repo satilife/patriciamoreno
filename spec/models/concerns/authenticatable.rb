@@ -4,7 +4,7 @@ RSpec.shared_examples 'an authenticatable record' do
   include_context 'omniauth'
 
   let(:klass)           { subject.class }
-  let(:oauth_record)    { create klass, first_name: user_info.first_name, last_name: user_info.last_name, email: user_info.email }
+  let(:oauth_record)    { create klass_symbol, first_name: user_info.first_name, last_name: user_info.last_name, email: user_info.email }
 
   describe '.from_omniauth' do
     let(:instance)  { klass.from_omniauth(auth) }
@@ -72,7 +72,7 @@ RSpec.shared_examples 'an authenticatable record' do
 
     context 'with an identity that matches another user' do
       let!(:identity) { instance }
-      let!(:other)    { create klass }
+      let!(:other)    { create klass_symbol }
 
       it 'raises an error' do
         expect { other.add_omniauth(auth) }.to raise_error Exceptions::IdentityExistsError

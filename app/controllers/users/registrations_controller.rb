@@ -1,8 +1,7 @@
 class Users::RegistrationsController < Devise::RegistrationsController
   before_action :configure_permitted_parameters
 
-  before_action :build_address,
-                :set_registration_presenter,
+  before_action :set_registration_presenter,
                                             only: [:edit, :update]
 
   protected
@@ -14,7 +13,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   private
 
   def configure_permitted_parameters
-    devise_parameter_sanitizer.for(:account_update) { |u| u.permit(*allowed_parameters) }
+    devise_parameter_sanitizer.permit(:account_update) { |u| u.permit(*allowed_parameters) }
   end
 
   def allowed_parameters
@@ -41,10 +40,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def current_user
     @current_user ||= super && User.for_review.find(@current_user.id)
-  end
-
-  def build_address
-    current_user.build_address unless current_user.address.present?
   end
 
   def set_registration_presenter
