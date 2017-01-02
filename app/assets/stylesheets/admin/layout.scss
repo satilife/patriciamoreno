@@ -1,0 +1,38 @@
+article {
+  header {
+    h1 {
+      margin: 0 0 20px;
+      border-bottom: 1px solid $black;
+      padding-bottom: 10px;
+    }
+  }
+
+  address {
+    margin: 0;
+  }
+}
+
+table.table {
+  margin-bottom: 0;
+}
+
+.radio label,
+.checkbox label {
+  padding-left: 10px;
+}
+
+.radio input[type="radio"],
+.radio-inline input[type="radio"],
+.checkbox input[type="checkbox"],
+.checkbox-inline input[type="checkbox"] {
+  position: relative;
+  margin-left: 0;
+  margin-top: 0px;
+  margin-right: 10px;
+}
+
+th, td {
+  &.blackout {
+    background-color: $black;
+  }
+}

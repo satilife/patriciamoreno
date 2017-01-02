@@ -48,9 +48,9 @@ gem 'uglifier'
 gem 'redis-rails'
 
 # Image Hosting
-#gem 'carrierwave'
-#gem 'fog'
-#gem 'mini_magick'
+gem 'carrierwave'
+gem 'fog'
+gem 'mini_magick'
 
 # ActiveRecord Utilities
 gem 'date_validator'

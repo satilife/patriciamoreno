@@ -1,0 +1,41 @@
+#day-at-camp {
+  p {
+    font-size: 16px;
+    padding-bottom: 0;
+  }
+
+  table {
+    width: auto;
+    margin: 25px 0;
+    display: inline-block;
+
+    th, td {
+      border: none;
+    }
+
+    th {
+      width: 150px;
+      text-align: right;
+    }
+
+    td {
+      text-align: left;
+    }
+  }
+}
+
+#camp-videos {
+  .video {
+    width: 230px;
+    height: 188px;
+    margin: 0 25px 25px 25px;
+    display: inline-block;
+    background: asset-url('welcome/video-background.png') no-repeat center center;
+
+    a {
+      img {
+        margin: -80px 0 0 -30px;
+      }
+    }
+  }
+}

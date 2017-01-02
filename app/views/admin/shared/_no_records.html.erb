@@ -1,0 +1,8 @@
+<div class="alert alert-warning" role="alert">
+  <%= fa_icon 'warning' %>
+  <span class="sr-only">Info:</span>
+  No <%= @record_type %> found.
+  <% if creatable? %>
+    Please <%= link_to 'add one', @new_path %>.
+  <% end %>
+</div>

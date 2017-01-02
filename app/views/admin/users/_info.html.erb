@@ -1,0 +1,25 @@
+<% if @record.photo? %>
+<div class="col-xs-2 text-center">
+  <%= image_tag @record.photo, width: 72 %>
+</div>
+<div class="col-xs-10">
+<% else %>
+<div class="col-xs-12">
+<% end %>
+  <table class="table table-headless">
+    <tbody>
+      <tr>
+        <th>Name</th>
+        <td><%= @record.name %></td>
+      </tr>
+      <tr>
+        <th>Email</th>
+        <td><%= mail_to @record.email %></td>
+      </tr>
+      <tr>
+        <th>Admin</th>
+        <td><%= yes_no_label @record.admin? %></td>
+      </tr>
+    </tbody>
+  </table>
+</div>

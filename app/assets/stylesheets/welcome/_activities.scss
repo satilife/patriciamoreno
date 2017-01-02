@@ -1,0 +1,176 @@
+#activities {
+  padding: 65px 0;
+  z-index: 50;
+
+  h2 {
+    line-height: 60px;
+    margin-bottom: 0;
+  }
+
+  p {
+    font-size: 16px;
+  }
+
+  #offerings {
+    margin-top: 25px;
+
+    .activity-offering {
+      width: 190px;
+      height: 190px;
+      display: inline-block;
+      margin-bottom: 15px;
+
+      h6 {
+        font-size: 15px;
+        font-weight: normal;
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  #about-activities {
+    p {
+      font-size: 18px;
+
+      &.overview {
+        padding: 12px 23px;
+        background: $light-grey;
+        line-height: 22px;
+        margin-bottom: 25px;
+      }
+    }
+  }
+
+  hr {
+    border-top-color: $light-grey-2;
+  }
+
+  #announced-instructors {
+    padding: 5px 0 20px;
+
+    p {
+      color: $orange-2;
+      font-size: 14px;
+      line-height: 18px;
+      margin-bottom: 0;
+
+      a {
+        color: $orange-2;
+        font-weight: bold;
+      }
+    }
+  }
+
+  #accomidations {
+    .accomidation {
+      width: 430px;
+      margin: 0 10px;
+      display: inline-block;
+      padding-top: 30px;
+      vertical-align: top;
+
+      img {
+        margin-bottom: 20px;
+      }
+
+      p {
+        margin: 0;
+        padding: 0 20px;
+        line-height: 25px;
+      }
+    }
+  }
+
+  #food {
+    h2 {
+      margin: 15px 0;
+    }
+
+    p {
+      margin: 0;
+      line-height: 25px;
+
+      a {
+        color: $dark-grey;
+        text-decoration: underline;
+
+        &:hover {
+          color: $light-grey;
+        }
+      }
+    }
+
+    #food-grid {
+      display: inline-block;
+      position: relative;
+      max-width: 865px;
+      width: 100%;
+      padding-top: 30px;
+      vertical-align: top;
+
+      #cookbook {
+        top: 310px;
+        right: 0;
+        width: 107px;
+        height: 110px;
+        position: absolute;
+        margin-right: -30px;
+      }
+
+      .small-grid {
+        display: none;
+        position: relative;
+
+        p {
+          padding: 25px;
+        }
+      }
+
+      @media (max-width: 981px) {
+        max-width: 430px;
+
+        .big-grid {
+          display: none;
+        }
+
+        .small-grid {
+          display: block;
+        }
+
+        #cookbook {
+          top: 315px;
+          right: 122px;
+          margin-right: 0;
+        }
+
+        .menu-button {
+          left: 0;
+          bottom: 0;
+          position: absolute;
+        }
+      }
+
+      img {
+        margin-top: 3px;
+      }
+
+      .vertical-grid {
+        display: inline-block;
+        vertical-align: top;
+        width: 190px;
+
+        strong {
+          font-size: 16px;
+          padding: 5px 0 10px;
+          display: block;
+        }
+
+        p {
+          padding: 0 10px 0 0;
+          font-size: 16px;
+          line-height: 20px;
+        }
+      }
+    }
+  }
+}

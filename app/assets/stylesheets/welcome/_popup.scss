@@ -1,0 +1,93 @@
+#popup {
+  text-align: center;
+  top: 75px;
+  left: 50%;
+  width: 600px;
+  //color: $white;
+  position: fixed;
+  //background: asset-url('shared/sections/wood-grain.png') repeat top center;
+  margin-left: -300px;
+  z-index: 10000;
+  padding: 20px 0 10px;
+  display: none;
+
+  .close-popup {
+    top: 0;
+    right: 0;
+    width: 30px;
+    color: $white;
+    height: 30px;
+    margin: -15px -15px 0 0;
+    position: absolute;
+    font-size: 24px;
+    background: $purple;
+    line-height: 30px;
+    border-radius: 50%;
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
+
+  h4 {
+    position: relative;
+    line-height: 30px;
+
+    .checkmark {
+      position: absolute;
+      top: 0;
+      left: 0;
+      margin-left: -48px;
+      margin-top: -8px;
+    }
+  }
+
+  background: $white;
+  border-radius: 5px;
+  border: 5px solid #b2ff1c;
+
+  .response {
+    color: #034d8a;
+  }
+
+  h4 {
+    color: #034d8a;
+    font-size: 18px;
+  }
+
+  @media (max-width: $screen-xs-max) {
+    width: 360px;
+    margin-left: -180px;
+  }
+}
+
+#popup-countdown-text {
+  text-align: center;
+  padding-bottom: 30px;
+
+  h4 {
+    font-family: lato;
+    font-size: 24px;
+    margin: 0;
+    text-transform: uppercase;
+  }
+
+  #popup-countdown-value {
+    font-family: lato;
+    font-size: 72px;
+    margin: 0;
+    text-transform: uppercase;
+  }
+
+  .row {
+    width: 300px;
+    margin: 0 auto;
+  }
+
+  h6 {
+    font-family: lato;
+    font-size: 16px;
+    margin: 0;
+    text-transform: uppercase;
+  }
+}

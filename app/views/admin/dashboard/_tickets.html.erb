@@ -1,0 +1,119 @@
+<% @tickets_by_camp.each do |camp, tickets| %>
+  <h2><%= camp.name %></h2>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Quantity</th>
+        <th># Sold</th>
+        <th># Remaining</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% tickets.each do |ticket| %>
+        <tr>
+          <td><%= ticket.name %></td>
+          <td><%= ticket.total_quantity %></td>
+          <td><%= ticket.reservations_count %></td>
+          <td><%= ticket.remaining %></td>
+        </tr>
+      <% end %>
+      <tr>
+        <th colspan="2"><strong>TOTAL SOLD</strong></th>
+        <td colspan="2"><%= @sales_by_camp[camp][:count] %></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>By Month</h3>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Year</th>
+        <th>Month</th>
+        <th>Units Sold</th>
+        <th>Value</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @year_month_report[camp.id].keys.sort.each do |year| %>
+        <% @year_month_report[camp.id][year].keys.sort.each do |month| %>
+          <tr>
+            <td><%= year %></td>
+            <td><%= Date::MONTHNAMES[month] %></td>
+            <td><%= @year_month_report[camp.id][year][month][:units] %></td>
+            <td><%= humanized_money_with_symbol(@year_month_report[camp.id][year][month][:value] / 100) %></td>
+          </tr>
+        <% end %>
+      <% end %>
+    </tbody>
+  </table>
+
+  <h3>Sales</h3>
+  <table class="table">
+    <tbody>
+      <tr>
+        <th><strong>Subtotal</strong> <small>(Taken In)</small></th>
+        <td><%= humanized_money_with_symbol(@sales_by_camp[camp][:subtotal]) %>
+      </tr>
+      <tr>
+        <th>Subscriptions</th>
+        <td><%= @sales_by_camp[camp][:subscriptions] %>
+      </tr>
+      <tr>
+        <th>Pending Subscription Value</th>
+        <td class="warning"><%= humanized_money_with_symbol(@sales_by_camp[camp][:subs_value]) %>
+      </tr>
+      <tr>
+        <th>Tax</th>
+        <td class="danger"><%= humanized_money_with_symbol(@sales_by_camp[camp][:tax]) %>
+      </tr>
+      <tr>
+        <th><strong>Total</strong> <small>(Value Sold)</small></th>
+        <td class="info"><%= humanized_money_with_symbol(@sales_by_camp[camp][:total]) %>
+      </tr>
+      <tr>
+        <th><strong>After Tax Total</strong></th>
+        <td class="success"><%= humanized_money_with_symbol(@sales_by_camp[camp][:after_tax]) %>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>Volume</h3>
+  <table class="table">
+    <thead>
+      <tr>
+        <th></th>
+        <th>Count</th>
+        <th>After Tax Total</th>
+        <th>Tax</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th>1 week ago</th>
+        <td><%= @sales_by_camp[camp][:weeks][:week1][:count] %>
+        <td><%= humanized_money_with_symbol(@sales_by_camp[camp][:weeks][:week1][:subtotal]) %>
+        <td><%= humanized_money_with_symbol(@sales_by_camp[camp][:weeks][:week1][:tax]) %>
+      </tr>
+      <tr>
+        <th>2 weeks ago</th>
+        <td><%= @sales_by_camp[camp][:weeks][:week2][:count] %>
+        <td><%= humanized_money_with_symbol(@sales_by_camp[camp][:weeks][:week2][:subtotal]) %>
+        <td><%= humanized_money_with_symbol(@sales_by_camp[camp][:weeks][:week2][:tax]) %>
+      </tr>
+      <tr>
+        <th>3 weeks ago</th>
+        <td><%= @sales_by_camp[camp][:weeks][:week3][:count] %>
+        <td><%= humanized_money_with_symbol(@sales_by_camp[camp][:weeks][:week3][:subtotal]) %>
+        <td><%= humanized_money_with_symbol(@sales_by_camp[camp][:weeks][:week3][:tax]) %>
+      </tr>
+      <tr>
+        <th>4 weeks ago</th>
+        <td><%= @sales_by_camp[camp][:weeks][:week4][:count] %>
+        <td><%= humanized_money_with_symbol(@sales_by_camp[camp][:weeks][:week4][:subtotal]) %>
+        <td><%= humanized_money_with_symbol(@sales_by_camp[camp][:weeks][:week4][:tax]) %>
+      </tr>
+    </tbody>
+  </table>
+<% end %>

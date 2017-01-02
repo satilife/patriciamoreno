@@ -1,0 +1,27 @@
+section#social {
+  padding: 25px 0 50px;
+  text-align: center;
+  background-position: top center;
+
+  .optin {
+    margin-top: 50px;
+  }
+
+  #social-buttons {
+    .social {
+      margin: 0 5px;
+      display: inline-block;
+      opacity: 0.75;
+
+      &:hover {
+        opacity: 1.0;
+      }
+    }
+  }
+
+  #social-optin {
+    padding: 0 15px 15px;
+    border: 2px solid $white;
+    margin: 15px auto;
+  }
+}

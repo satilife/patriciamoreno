@@ -1,0 +1,7 @@
+<% if breadcrumb_view_link.present? %>
+  <%= content_tag :li, breadcrumb_view_link %>
+<% elsif viewable? %>
+  <%= content_tag :li, link_to(@record.name, @show_path) %>
+<% end %>
+
+<%= content_tag :li, breadcrumb_edit_action, class: 'active' %>

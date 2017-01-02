@@ -1,0 +1,75 @@
+.camp {
+  width: 386px;
+  margin: 25px 0;
+  padding: 10px 0 0;
+  display: inline-block;
+  background: $white;
+
+  p {
+    color: $black;
+    height: 180px;
+    padding: 15px 15px 0;
+    font-size: 16px;
+    line-height: 20px;
+  }
+
+  .features {
+    margin: 0;
+    padding: 0 20px;
+
+    .feature {
+      width: 76px;
+      float: left;
+      margin: 0 5px;
+
+      .feature-icon {
+        width: 76px;
+        height: 76px;
+        display: table-cell;
+        overflow: visible;
+        background: asset-url('welcome/camps/feature.png') no-repeat center center;
+        vertical-align: middle;
+      }
+
+      p {
+        color: $dark-grey;
+        height: 80px;
+        margin: 0;
+        padding: 10px 0 0;
+        font-size: 10px;
+        line-height: 12px;
+      }
+    }
+  }
+
+  .btn {
+    width: 100%;
+    border: 0;
+    padding: 5px 0;
+    margin-top: 15px;
+    border-radius: 0;
+
+    img {
+      margin-top: -30px;
+    }
+
+    .wrapper {
+      padding: 5px 15px 0;
+      display: inline-block;
+
+      h4 {
+        margin: 0;
+      }
+    }
+  }
+
+  &:hover {
+    cursor: pointer;
+
+    .btn {
+      color: #fff;
+      background-color: #ff4b14;
+      border-color: #ef3800;
+    }
+  }
+}

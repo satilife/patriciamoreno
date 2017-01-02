@@ -1,0 +1,132 @@
+html, body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+.navbar-nav > li > a {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+body {
+  background: $white;
+  font: 14px lato;
+
+  main {
+    min-height: 440px;
+    padding: 2rem 0 6rem;
+  }
+
+  p.spacer {
+    padding: 2rem 0;
+  }
+
+  .title {
+    margin: 0 0 20px;
+  }
+
+  form {
+    abbr {
+      color: $red;
+    }
+
+    .has-error {
+      margin-bottom: 0;
+
+      .help-block {
+        margin-bottom: 5px;
+      }
+    }
+  }
+
+  hr {
+    &.min-top {
+      margin-top: 5px;
+    }
+
+    &.condensed {
+      margin: 10px 0;
+    }
+
+    &.spacer {
+      border-top: 0;
+    }
+
+    &.min-bottom {
+      margin-bottom: 5px;
+    }
+  }
+
+  table.table {
+    &.table-headless {
+      tbody {
+        tr:first-child {
+          th, td {
+            border-top: none;
+          }
+        }
+      }
+    }
+
+    &.borderless {
+      th, td {
+        border: none;
+      }
+    }
+  }
+
+  .trim-bottom {
+    margin-bottom: 0;
+  }
+
+  .trim-pagination-top {
+    .pagination {
+      margin-top: 0;
+    }
+  }
+
+  .btn {
+    .on-hover {
+      display: none;
+    }
+
+    &:hover {
+      .on-hover {
+        display: block;
+      }
+
+      .off-hover {
+        display: none;
+      }
+    }
+  }
+}
+
+.st__content-block--image {
+  img {
+    max-width: 100%;
+  }
+}
+
+.modal-dialog {
+  margin: 75px auto;
+}
+
+.spacing-top {
+  padding-top: 35px !important;
+}
+
+.spacing-bottom {
+  padding-bottom: 35px !important;
+}
+
+.btn-primary-alt {
+  background-color: $hot-pink;
+  border-color: #ff5e2e;
+  color: $white;
+
+  &:hover {
+    color: $white;
+    background-color: $pink;
+  }
+}

@@ -1,0 +1,25 @@
+.welcome-index {
+  // Common
+  @import 'camps';
+  @import 'shared/faq';
+  @import 'shared/day-at-camp';
+
+  // Sections
+  @import 'header';
+  @import 'press';
+  @import 'about';
+  @import 'upcoming';
+  @import 'register';
+  @import 'camp-365';
+
+  #sponsor {
+    padding-bottom: 50px;
+  }
+
+  position: relative;
+  z-index: 100;
+}
+
+@import 'praise';
+@import 'activities';
+@import 'popup';

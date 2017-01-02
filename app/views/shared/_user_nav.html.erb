@@ -1,0 +1,8 @@
+<li class="<%= hide_for('welcome') %>">
+  <%= link_to root_path do %>
+    <%= fa_icon 'home' %>
+  <% end %>
+</li>
+<li class="<%= active_for_subnav(:account) %>">
+  <%= link_to 'My Account', edit_user_registration_path %></li>
+</li>

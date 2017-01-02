@@ -1,0 +1,31 @@
+#user-profile {
+  max-height: 50px;
+
+  > a {
+    padding: 15px 8px 15px;
+    max-height: 50px;
+    min-height: 50px;
+
+    &.login {
+      padding: 18px 8px 20px;
+    }
+  }
+
+  .dropdown-menu {
+    .btn {
+      color: $white;
+      border-radius: 0;
+      border-width: 1px 0;
+
+      &:hover {
+        color: $black;
+      }
+    }
+  }
+
+  img {
+    max-height: 25px;
+    margin-top: -3px;
+    border-radius: 50%;
+  }
+}

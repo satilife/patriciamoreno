@@ -1,0 +1,104 @@
+#praise {
+  //padding-bottom: 0;
+
+  #praise-carousel {
+    height: 240px;
+
+    .carousel-control {
+      background: none;
+
+      img {
+        top: 50%;
+        position: absolute;
+        margin: -26px 0 0;
+      }
+
+      &.left {
+        img { right: 0%; }
+      }
+
+      &.right {
+        img { left: 0%; }
+      }
+    }
+
+    .carousel-inner {
+      .item {
+        font-size: 20px;
+        line-height: 24px;
+
+        span {
+          height: 240px;
+          display: table-cell;
+          text-align: center;
+          vertical-align: middle;
+        }
+      }
+    }
+  }
+
+  .video {
+    margin-bottom: 40px;
+  }
+
+  .btn {
+    width: 290px;
+    font-size: 14px;
+  }
+
+  #doubts {
+    padding-bottom: 30px;
+
+    #signposts {
+      .signpost {
+        position: relative;
+        background: asset-url('welcome/grass.png') repeat-x bottom center;
+        padding-bottom: 30px;
+
+        .doubt {
+          cursor: pointer;
+        }
+
+        .grass-pointer {
+          left: 50%;
+          bottom: 0;
+          margin: 0 0 -20px -15px;
+          display: none;
+          position: absolute;
+        }
+
+        @media (max-width: $screen-xs-max) {
+          .grass-pointer {
+            display: none !important;
+          }
+        }
+
+        .text {
+          top: 15px;
+          left: 50%;
+          width: 200px;
+          color: $white;
+          cursor: pointer;
+          position: absolute;
+          font-size: 34px;
+          margin-left: -95px;
+        }
+      }
+
+      .desc {
+        float: left;
+        padding: 30px;
+        font-size: 18px;
+      }
+    }
+
+    #responses {
+      padding-top: 50px;
+
+      p {
+        display: none;
+        font-size: 18px;
+      }
+    }
+  }
+}

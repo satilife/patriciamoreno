@@ -1,0 +1,25 @@
+<% if subnav %>
+  <%= render "admin/shared/subnav/#{subnav}" %>
+  <hr>
+<% end %>
+<header>
+  <h1>
+    <% if index? %>
+      <%= @title %>
+      <%= link_to 'Create New', @new_path, class: 'btn btn-primary' if creatable? %>
+    <% elsif newish? %>
+      <%= @record_action %>
+    <% elsif editish? %>
+      <%= @record_action %>: <%= @record.name %>
+      <%= render 'admin/shared/delete_button' if deletable? %>
+    <% else %>
+      <%= @record.name %>
+      <% if editable? %>
+        <%= link_to 'Edit', @edit_path, class: 'btn btn-primary'  %>
+      <% elsif deletable? %>
+        <%= render 'admin/shared/delete_button' %>
+      <% end %>
+    <% end %>
+  </h1>
+</header>
+<%= render 'admin/shared/breadcrumbs' %>

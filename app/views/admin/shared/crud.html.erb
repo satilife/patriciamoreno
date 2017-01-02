@@ -1,0 +1,20 @@
+<article id="admin-<%= controller_name %>-<%= action_name %>" class="container">
+  <%= render 'admin/shared/header' %>
+
+  <section class="row">
+    <div class="col-xs-12">
+      <% if index? %>
+        <% if @records.length == 0 %>
+          <%= render 'admin/shared/no_records' %>
+        <% else %>
+          <%= render 'index' %>
+          <%= will_paginate @records, renderer: BootstrapPagination::Rails %>
+        <% end %>
+      <% elsif show? %>
+        <%= render 'show' %>
+      <% else %>
+        <%= render 'admin/shared/form' %>
+      <% end %>
+    </div>
+  </section>
+</article>

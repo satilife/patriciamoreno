@@ -1,0 +1,19 @@
+<nav>
+  <ul class="nav nav-pills">
+    <li class="<%= active_for('reservations') %>">
+      <%= link_to 'Reservations', admin_reservations_path %></li>
+    </li>
+    <li class="<%= active_for('bunks') %>">
+      <%= link_to 'Bunks', admin_bunks_path %></li>
+    </li>
+    <li class="<%= active_for('cabins') %>">
+      <%= link_to 'Cabins', admin_cabins_path %></li>
+    </li>
+    <li class="<%= active_for('squads') %>">
+      <%= link_to 'Squads', admin_squads_path %></li>
+    </li>
+    <li class="<%= active_for('vouchers') %>">
+      <%= link_to 'Vouchers', admin_vouchers_path %></li>
+    </li>
+  </ul>
+</nav>

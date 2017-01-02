@@ -1,0 +1,16 @@
+<nav>
+  <ul class="nav nav-pills">
+    <li class="<%= active_for('balance_transactions') %>">
+      <%= link_to 'Transactions', admin_balance_transactions_path %></li>
+    </li>
+    <li class="<%= active_for('payments') %>">
+      <%= link_to 'Payments', admin_payments_path %></li>
+    </li>
+    <li class="<%= active_for('payment_plans') %>">
+      <%= link_to 'Payment Plans', admin_payment_plans_path %></li>
+    </li>
+    <li class="<%= active_for('subscriptions') %>">
+      <%= link_to 'Subscriptions', admin_subscriptions_path %></li>
+    </li>
+  </ul>
+</nav>

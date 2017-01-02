@@ -1,0 +1,5 @@
+<% if breadcrumb_index_link.present? %>
+  <%= content_tag :li, breadcrumb_index_link %>
+<% elsif indexable? %>
+  <%= content_tag :li, link_to(@title, @index_path) %>
+<% end %>

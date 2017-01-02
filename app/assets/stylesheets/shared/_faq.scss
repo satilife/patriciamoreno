@@ -1,0 +1,43 @@
+#faq {
+  z-index: 50;
+
+  h2 {
+    font-size: 60px;
+  }
+
+  #faq-content {
+    border: 1px solid $light-grey-2;
+    padding: 15px;
+    text-align: left;
+
+    .panel {
+      border: none;
+      box-shadow: none;
+
+      .panel-heading {
+        color: $grey;
+        font-size: 16px;
+        background: transparent;
+        a {
+          color: $grey;
+          padding-left: 25px;
+          background-image: asset-url('welcome/faq-expanded.png');
+          background-repeat: no-repeat;
+          background-position: left center;
+
+          &.collapsed {
+            background-image: asset-url('welcome/faq-collapsed.png');
+          }
+        }
+      }
+
+      .panel-body {
+        color: $grey;
+        border: none;
+        padding: 0 15px 0 50px;
+        line-height: 20px;
+      }
+    }
+  }
+}
+

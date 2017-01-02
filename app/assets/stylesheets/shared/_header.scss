@@ -1,0 +1,40 @@
+@media (min-width: $grid-float-breakpoint) {
+  .navbar-header {
+    float: right;
+  }
+}
+
+.navbar-default {
+  z-index: 90000;
+
+  hr {
+    top: 50px;
+    left: 0px;
+    width: 100%;
+    margin: 0;
+    position: absolute;
+  }
+
+  .nav-link {
+    padding: 19px 15px 18px;
+  }
+
+  .navbar-btn {
+    margin: 13px 15px;
+  }
+
+  .navbar-toggle {
+    margin-left: 15px;
+  }
+
+  a {
+    font-size: 12px;
+    font-family: lato;
+    text-transform: uppercase;
+  }
+}
+
+#header-spacer {
+  width: 100%;
+  height: 50px;         // Compensation for fixed header
+}

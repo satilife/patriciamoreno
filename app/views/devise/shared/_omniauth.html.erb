@@ -6,7 +6,7 @@
     </div>
     <div class="col-xs-6 col-md-12">
       <p>
-        <%= link_to user_omniauth_authorize_path(:facebook), class: 'btn btn-block btn-lg btn-social btn-facebook' do %>
+        <%= link_to user_facebook_omniauth_authorize_path, class: 'btn btn-block btn-lg btn-social btn-facebook' do %>
           <%= fa_icon 'facebook' %>
           <span class="hidden-xs">Sign in with&nbsp;</span>Facebook
         <% end %>
@@ -14,7 +14,7 @@
     </div>
     <div class="col-xs-6 col-md-12">
       <p>
-        <%= link_to user_omniauth_authorize_path(:google_oauth2), class: 'btn btn-block btn-lg btn-social btn-google' do %>
+        <%= link_to user_google_oauth2_omniauth_authorize_path, class: 'btn btn-block btn-lg btn-social btn-google' do %>
           <%= fa_icon 'google' %>
           <span class="hidden-xs">Sign in with&nbsp;</span>Google
         <% end %>

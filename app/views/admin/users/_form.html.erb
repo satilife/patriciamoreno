@@ -1,0 +1,51 @@
+<%= simple_form_for [:admin, @record], html: { multipart: true } do |f| %>
+  <%= f.input :password_set, as: :hidden, input_html: { value: false } %>
+  <%= f.input :password,     as: :hidden, input_html: { value: Devise.friendly_token[0,20] } %>
+
+  <div class="row">
+    <div class="col-xs-6">
+      <%= f.input :first_name %>
+    </div>
+    <div class="col-xs-6">
+      <%= f.input :last_name %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-12">
+      <%= f.input :email, required: true %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-12">
+      <%= f.input :admin %>
+    </div>
+  </div>
+
+  <% if newish? %>
+    <div class="row">
+      <div class="col-xs-12">
+        <%= f.input :send_password_email, as: :boolean, input_html: { checked: false } %>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="row">
+    <div class="col-xs-12">
+      <%= f.input :uploaded_avatar, as: :file %>
+    </div>
+  </div>
+
+  <% if @record.photo? %>
+    <div class="row">
+      <div class="col-xs-12">
+        <%= image_tag @record.photo, width: 144 %>
+      </div>
+    </div>
+  <% end %>
+
+  <hr>
+
+  <%= f.button :submit, class: 'btn btn-primary' %>
+<% end %>

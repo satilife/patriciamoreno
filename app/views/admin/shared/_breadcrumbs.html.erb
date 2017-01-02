@@ -1,0 +1,20 @@
+<ol class="breadcrumb">
+  <li>
+    <%= link_to admin_dashboard_path do %>
+      <%= fa_icon 'home' %>
+    <% end %>
+  </li>
+  <% if index? %>
+    <li class="active"><%= @title %></li>
+  <% else %>
+    <%= render 'admin/shared/breadcrumbs/index' %>
+
+    <% if newish? %>
+      <%= render 'admin/shared/breadcrumbs/new' %>
+    <% elsif editish? %>
+      <%= render 'admin/shared/breadcrumbs/edit' %>
+    <% else %>
+      <%= content_tag :li, @record.name, class: 'active' %>
+    <% end %>
+  <% end %>
+</ol>

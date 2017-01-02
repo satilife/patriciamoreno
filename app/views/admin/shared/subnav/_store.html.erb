@@ -1,0 +1,16 @@
+<nav>
+  <ul class="nav nav-pills">
+    <li class="<%= active_for('products') %>">
+      <%= link_to 'Products', admin_products_path %></li>
+    </li>
+    <li class="<%= active_for('brands') %>">
+      <%= link_to 'Brands', admin_brands_path %></li>
+    </li>
+    <li class="<%= active_for('private_activities') %>">
+      <%= link_to 'Private Activities', admin_private_activities_path %></li>
+    </li>
+    <li class="<%= active_for('orders') %>">
+      <%= link_to 'Orders', admin_orders_path %></li>
+    </li>
+  </ul>
+</nav>

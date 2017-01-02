@@ -22,6 +22,7 @@
 #  last_sign_in_ip        :inet
 #  password_set           :boolean          default(TRUE)
 #  avatar                 :string
+#  uploaded_avatar        :string
 #
 # Indexes
 #

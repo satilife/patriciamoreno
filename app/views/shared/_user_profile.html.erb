@@ -1,0 +1,27 @@
+<% if user_signed_in? %>
+  <li id="user-profile" class="dropdown pull-right">
+    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+      <% if current_user.photo? %>
+        <%= image_tag current_user.photo, width: 25 %>
+      <% else %>
+        <%= fa_icon 'user' %>
+      <% end %>
+      <span class="caret"></span>
+    </a>
+    <ul class="dropdown-menu">
+      <% if current_user.admin? %>
+        <li><%= link_to 'Admin', admin_dashboard_path %></li>
+      <% end %>
+      <li><%= link_to 'My Account', edit_user_registration_path %></li>
+      <li role="separator" class="divider"></li>
+      <li><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></li>
+    </ul>
+  </li>
+<% else %>
+  <li id="user-profile" class="pull-right">
+    <%= link_to new_user_session_path, class: 'login' do %>
+      <%= fa_icon 'user' %>
+      <strong class="hidden-xs hidden-sm">Sign In</strong>
+    <% end %>
+  </li>
+<% end %>

@@ -1,0 +1,5 @@
+<% if breadcrumb_new_link.present? %>
+  <%= content_tag :li, breadcrumb_new_link %>
+<% end %>
+
+<%= content_tag :li, breadcrumb_new_action, class: 'active' %>
