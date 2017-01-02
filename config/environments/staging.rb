@@ -68,15 +68,15 @@ Rails.application.configure do
 
   # Configure the mailer
   config.action_mailer.default_url_options = { host: 'satilife-staging.herokuapp.com' }
-  #config.action_mailer.smtp_settings = {
-  #  domain:               'soul.camp',
-  #  address:              'smtp.sendgrid.net',
-  #  port:                 '587',
-  #  authentication:       :plain,
-  #  user_name:            ENV['SENDGRID_USERNAME'],
-  #  password:             ENV['SENDGRID_PASSWORD'],
-  #  enable_starttls_auto: true
-  #}
+  config.action_mailer.smtp_settings = {
+    domain:               'satilife-staging.herokuapp.com',
+    address:              'smtp.sendgrid.net',
+    port:                 '587',
+    authentication:       :plain,
+    user_name:            ENV['SENDGRID_USERNAME'],
+    password:             ENV['SENDGRID_PASSWORD'],
+    enable_starttls_auto: true
+  }
 
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
